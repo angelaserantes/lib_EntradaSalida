@@ -27,3 +27,5 @@ Posibilidad de imprimir por consola o en una ventana
 Pedir enteros o string con la clase [Scanner](https://docs.oracle.com/javase/8/docs/api/java/util/Scanner.html)
 
 Enviando una cadena como mensaje para el scanner
+
+Nueva rama
