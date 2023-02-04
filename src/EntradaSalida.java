@@ -1,5 +1,6 @@
 import javax.swing.*;
-
+import java.util.InputMismatchException;
+import java.util.Scanner;
 /**
  * Libreria para sacar por dispositivos un mensaje y
  * pedir por consola distintos tipos de datos
@@ -15,6 +16,11 @@ public class EntradaSalida {
      * opción de uso de utilizar una ventana en el escritorio para sacar un mensaje
      */
     public static final int SALIDA_WINDOW = 2;
+
+
+    public static final int STRING_COMENTARIO = 1;
+
+    public static final int INT_COMENTARIO =2;
 
     private void EntradaSalida(){};
 
@@ -47,12 +53,77 @@ public class EntradaSalida {
         }
     }
 
+
+    public static boolean salidanumero(int edad, int device) {
+        switch (device) {
+            case SALIDA_CONSOLA:
+                try {
+                    System.out.println("Consola: " + edad);
+                    return true;
+                } catch (Exception e) {
+                    return false;
+                }
+
+            case SALIDA_WINDOW:
+                try {
+                    JOptionPane.showMessageDialog(null,"Sale por un ventana " + edad);
+                    return true;
+                } catch(Exception e) {
+                    System.out.println(e.getMessage());
+                    return false;
+                }
+            default:
+                return false;
+        }
+    }
+
+
+
     /**
      * TODO método para obtener distintos tipos de datos por consola
-     * @param comentario
+     *
      * @return
      */
-    public static String entrada(String comentario){
-        return "";
+    public static String entradaString(int device){
+        switch (device){
+            case STRING_COMENTARIO:
+                try {
+                    System.out.println("Dime tu nombre");
+                    Scanner datos = new Scanner(System.in);
+                    return datos.nextLine();
+                } catch (Exception e){
+                    System.out.println(e.getMessage());
+                    return null;
+                }
+            default:
+                return null;
+        }
+
+
     }
+
+    public static int entradaInt(int device) {
+        boolean edadOK = false;
+        int edad = 0;
+        Scanner datos = new Scanner(System.in);
+        while (!edadOK) {
+            switch (device) {
+                case INT_COMENTARIO:
+
+                    try {
+                        edadOK = true;
+                        System.out.println("Dime tu edad");
+                        edad = datos.nextInt();
+                        //return datos.nextInt();
+                    } catch (InputMismatchException ex) {
+                        edadOK = false;
+                        ex.printStackTrace();
+                        datos.next();
+
+                    }
+
+            }
+    } return edad;
+
+}
 }
