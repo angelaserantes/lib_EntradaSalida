@@ -4,8 +4,8 @@ import java.util.Scanner;
 /**
  * Libreria para sacar por dispositivos un mensaje y
  * pedir por consola distintos tipos de datos
- * @version 0.1
- * @author Damian Nogueiras
+ * @version 0.2
+ * @author Angela Serantes
  */
 public class EntradaSalida {
     /**
@@ -18,8 +18,14 @@ public class EntradaSalida {
     public static final int SALIDA_WINDOW = 2;
 
 
-    public static final int STRING_COMENTARIO = 1;
 
+    /**
+     * opción para recoger un string
+     */
+    public static final int STRING_COMENTARIO = 1;
+    /**
+     * opción para recoger un entero
+     */
     public static final int INT_COMENTARIO =2;
 
     private void EntradaSalida(){};
@@ -52,7 +58,12 @@ public class EntradaSalida {
                 return false;
         }
     }
-
+    /**
+     * Salida por ventana o consala de un número entero
+     * @param edad cadena que queremos imprimir
+     * @param device dispositivo de salida<br>consola: SALIDA_CONSOLA<br>ventana:SALIDA_VENTANA
+     * @return si es true: correcto si no false
+     */
 
     public static boolean salidanumero(int edad, int device) {
         switch (device) {
@@ -80,9 +91,9 @@ public class EntradaSalida {
 
 
     /**
-     * TODO método para obtener distintos tipos de datos por consola
-     *
-     * @return
+     * método para obtener un String por consola
+     * @param device
+     * @return null
      */
     public static String entradaString(int device){
         switch (device){
@@ -101,6 +112,13 @@ public class EntradaSalida {
 
 
     }
+
+
+    /**
+     * método para obtener un entero por consola
+     * @param device
+     * @return edad
+     */
 
     public static int entradaInt(int device) {
         boolean edadOK = false;
